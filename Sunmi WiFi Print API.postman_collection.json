@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "b086a636-99e3-42fd-bb21-19909129f7bf",
+		"name": "Sunmi WiFi Print API",
+		"description": "Collection for testing Sunmi WiFi printing functionality",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40326606"
+	},
+	"item": [
+		{
+			"name": "Server Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Connected Devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Connected Devices Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/devices",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print Text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"deviceId\": \"{{device_id}}\",\n  \"text\": \"Hello from PC via WiFi!\",\n  \"fontSize\": 24,\n  \"alignment\": \"center\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/print/text",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"print",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print QR Code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"deviceId\": \"{{device_id}}\",\n  \"data\": \"https://github.com/nafilcookee/sunmi_printer\",\n  \"size\": 200\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/print/qrcode",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"print",
+						"qrcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print Barcode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"deviceId\": \"{{device_id}}\",\n  \"data\": \"1234567890\",\n  \"type\": \"CODE128\",\n  \"width\": 2,\n  \"height\": 100\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/print/barcode",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"print",
+						"barcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print Image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "deviceId",
+							"value": "{{device_id}}",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/print/image",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"print",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Test Device",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"deviceId\": \"{{device_id}}\",\n  \"deviceName\": \"Test Sunmi Device\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/register-device",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"register-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Print Jobs for Device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/print-jobs/{{device_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"print-jobs",
+						"{{device_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "device_id",
+			"value": "sunmi_device_test",
+			"type": "string"
+		}
+	]
+}
